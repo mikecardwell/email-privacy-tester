@@ -1,0 +1,41 @@
+<% @html_title   = 'Privacy Policy' %>
+<% @nav_selected = 'privacy' %>
+
+<% @content = () => %>
+
+  <div class="view">
+    <p>
+      <span class="pgp">---<!-- Purposefully break FirePGPs crappy inline detection -->--BEGIN PGP SIGNED MESSAGE-----<br>
+Hash: SHA1<br><br></span>
+This app requires your email address in order to work. Once you submit it, a salted hash of it is kept in a database for one week before being deleted. This is so I can apply rate limiting and react to abuse. The email address will also appear in my mail server logs, which go back as far as ten days. I will not share your email address with anyone, ever. I will never send any email to it other than the one-time email that this application is designed to send out when you submit it. The one email per submission that I do send to you contains an opt-out link. If you click it, I will store a salted hash of your email address in the database for the lifetime of this system and this app will be prevented from contacting it again.<br>
+<br>
+I also store test results for a period of one week before deletion. If I didn't store the results, I could not display them to you. This may consist of any of the following data:<br>
+<br>
+1.) The dates and times that you opened the email that I sent you<br>
+2.) The IP addresses that your email clients connect from<br>
+3.) The IP addresses of the DNS servers your email clients use<br>
+4.) The User-Agent HTTP request headers sent by your email clients<br>
+5.) The X-Forwarded-For HTTP request headers added by your web proxies<br>
+6.) The names of the tests which your email clients failed<br>
+<br>
+I also have standard Apache-style web server logs, for administering the site, analysing trends and combatting abuse.<br>
+<br>
+This site does not perform any automated cross-origin requests to third parties which you may not trust. This site doesn't use cookies, of any type. This site is also completely functional for browsers without JavaScript enabled, although it works much more efficiently for those which do. I respect your right to privacy and try to be as open as possible about how I use your data. If you have any questions, please <a href="https://grepular.com/contact">contact me</a><br>
+<br>
+Regards,<br>
+<br>
+Mike Cardwell (<a href="https://grepular.com/">https://grepular.com/</a>)<span class="pgp"><br><br>-----BEGIN PGP SIGNATURE-----<br>
+<br>
+iQGGBAEBAgBwBQJPomQIMBSAAAAAACAAB3ByZWZlcnJlZC1lbWFpbC1lbmNvZGlu<br>
+Z0BwZ3AuY29tcGdwbWltZTgUgAAAAAAVABpwa2EtYWRkcmVzc0BnbnVwZy5vcmdt<br>
+aWtlLmNhcmR3ZWxsQGdyZXB1bGFyLmNvbQAKCRCdJiMBwdHnBBcPCACmZ8iKRHwZ<br>
+fnJh9EfqmtGpS2q4e0iVcxdszcCI2urF7KRfRhMJ7gXHQ2XZXo5wVeL6Y55XjmH6<br>
+3N68kn6KaIuZcoz3iJph/E6rvpfOYMIyTXlXrrjuY+ZDxgZCDvuWk6xhEJyXb/0e<br>
+sS7o780LaKw4eWkF4IpFKfktRpVTUJreWUyzuCLFelQ2A7eRQVDhz82cDWxSdqVh<br>
+3anISfGYvPo+5QwAx5ScQoX/NZdj3gW+VJDfcrJiEd5EkU9nlOAHMsQZtbjFWil5<br>
+zY915QzEmZ136QIDR30Vh9hA+PSFQLX0piJIfU8GaFzHnHk8sgcpUVi/yWZb8fsL<br>
+Pqhsy4Bga/rf<br>
+=VFsa<br>
+-----END PGP SIGNATURE-----</span></p>
+  </div>
+<% end %>

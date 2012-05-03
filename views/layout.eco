@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="author"      content="Mike Cardwell. &lt;https://grepular.com/&gt;"/>
+    <meta name="description" content="An application which test the privacy and security of email/webmail clients"/>
+    <meta name="robots"      content="noodp,noydir,index,follow"/>
+    <meta name="viewport"    content="width=device-width"/>
+
+    <title><%= "#{@html_title} | " if @html_title? %>Email Privacy Tester</title>
+
+    <!--[if lte IE 8]>
+      <script type="text/javascript" src="/javascripts/html5.js"></script>
+      <style type="text/css">body{position:absolute;}</style>
+    <![endif]-->
+
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <% if @html_css?: %>
+      <% if typeof @html_css == 'string': %>
+        <link rel="stylesheet" href="<%= @html_css %>">
+      <% else: %>
+        <% for href in @html_css||[]: %>
+          <link rel="stylesheet" href="<%= href %>">
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if @html_head_append?: %><%- @html_head_append() %><% end %>
+  </head>
+  <body class="no-js">
+    <script>document.body.className='with-js'</script>
+    <% if @html_body_prepend?: %><%- @html_body_prepend() %><% end %>
+
+    <header>
+      <a href="/">Email Privacy Tester<% if @html_title?: %>: <%= @html_title %><% end %></a>
+      <span class="left">
+        <a href="https://grepular.com/blog/"><img src="/images/white_rss.png" width="20" height="20" alt="" title="Follow my blog"></a>
+        <a href="https://twitter.com/mickeyc"><img src="/images/white_twitter_bird.png" width="20" height="20" alt="" title="Follow me on Twitter"></a>
+        <a href="https://www.linkedin.com/in/mikecardwell"><img src="/images/white_linkedin.png" width="20" height="20" alt="" title="Find me on LinkedIn"></a>
+      </span>
+    </header>
+
+    <nav>
+      <a href="/"        class="<% if @nav_selected == 'home'    : %>selected<% end %>">Home</a>
+      <a href="/about"   class="<% if @nav_selected == 'about'   : %>selected<% end %>">About</a>
+      <a href="/privacy" class="<% if @nav_selected == 'privacy' : %>selected<% end %>">Privacy</a>
+      <a href="https://grepular.com/contact">Contact</a>
+    </nav>
+
+    <%- @content() %>
+
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/punycode.js"></script>
+    <script src="/javascripts/common.js"></script>
+    <% if @html_js?: %>
+      <% if typeof @html_js is 'string': %>
+        <script src="<%= @html_js %>"></script>
+      <% else: %>
+        <% for src in @html_js||[]: %> <script src="<%= src %>"></script> <% end %>
+      <% end %>
+    <% end %>
+
+    <% if @html_body_append?: %><%- @html_body_append() %><% end %>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<% @nav_selected = 'home' %>
+
+<% @content = () => %>
+  <div class="view">
+
+    <p>
+      To test your email client for privacy leaks and security bugs, enter your email address into the form
+      below. I strongly recommend that you read the <a href="/about">about page</a> before you proceed,
+      so you know what to expect.
+      <br><br>
+      The email sent by this system contains numerous unusual tricks which might offend some spam filters. If
+      possible, you may want to whitelist emails from sender addresses matching *@emailprivacytester.com before continuing.
+      <br><br>
+      <noscript>
+        Your browser has JavaScript disabled. Whilst this site is fully functional without it, it is much more
+        efficient and responsive with it enabled. I really recommend you turn it on. I wont abuse it to inject
+        adverts or anything else silly, I promise.
+        <br><br>
+      </noscript>
+    </p>
+
+    <form method="post">
+      <input type="text"   id="email"  class="email<%= if @error then ' bad' else '' %>"  name="email" value="<%= @email %>" placeholder="Email address" required="" autofocus=""><br>
+      <br>
+      <input type="submit" id="submit" class="submit" name="submit" value="Send Email">
+    </form>
+
+    <% if @error?: %>
+      <span>
+        <br>
+        <%= @error %>
+      </span>
+    <% end %>
+  </div>
+<% end %>

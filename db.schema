@@ -1,0 +1,58 @@
+DROP TABLE IF EXISTS email_log;
+DROP TABLE IF EXISTS email_log_type;
+DROP TABLE IF EXISTS callback;
+DROP TABLE IF EXISTS email;
+
+CREATE TABLE email (
+	email_id		INT UNSIGNED	NOT NULL AUTO_INCREMENT,
+	salt                    VARCHAR(255)    NOT NULL,
+	salted_email_hash       VARCHAR(255)    NOT NULL,
+	callback_code		VARCHAR(16)	NOT NULL,
+	lookup_code		VARCHAR(16)	NOT NULL,
+	ctime			BIGINT UNSIGNED	NOT NULL,
+	client_ip		VARCHAR(255)	NOT NULL,
+	PRIMARY KEY( email_id )
+) Engine=InnoDB;
+
+CREATE TABLE email_log_type (
+	email_log_type_id	INT UNSIGNED	NOT NULL AUTO_INCREMENT,
+	name			VARCHAR(255)	NOT NULL UNIQUE,
+	PRIMARY KEY( email_log_type_id )
+) Engine=InnoDB;
+
+INSERT INTO email_log_type SET name='queued';
+INSERT INTO email_log_type SET name='rejected';
+INSERT INTO email_log_type SET name='sent';
+
+CREATE TABLE email_log (
+	email_log_id		INT UNSIGNED	NOT NULL AUTO_INCREMENT,
+	email_id		INT UNSIGNED	NOT NULL,
+	email_log_type_id	INT UNSIGNED	NOT NULL,
+	ctime			BIGINT UNSIGNED NOT NULL,
+	message			VARCHAR(255)	NOT NULL,
+	PRIMARY KEY( email_log_id ),
+	CONSTRAINT FOREIGN KEY (email_id) REFERENCES email(email_id) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FOREIGN KEY (email_log_type_id) REFERENCES email_log_type(email_log_type_id) ON UPDATE CASCADE ON DELETE CASCADE
+) Engine=InnoDB;
+
+CREATE TABLE callback (
+	callback_id		INT UNSIGNED	NOT NULL AUTO_INCREMENT,
+	email_id		INT UNSIGNED	NOT NULL,
+	ctime			BIGINT UNSIGNED	NOT NULL,
+	name			VARCHAR(255)	NOT NULL,
+	client_ip		VARCHAR(255),
+	http_user_agent		VARCHAR(255),
+	http_x_forwarded_for	VARCHAR(255),
+	email_subject		VARCHAR(255),
+	PRIMARY KEY (callback_id),
+	CONSTRAINT FOREIGN KEY (email_id) REFERENCES email(email_id) ON UPDATE CASCADE ON DELETE CASCADE
+) Engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS optout (
+	optout_id		INT UNSIGNED	NOT NULL AUTO_INCREMENT,
+	salt			VARCHAR(255)	NOT NULL,
+	salted_email_hash	VARCHAR(255)	NOT NULL,
+	ctime			BIGINT UNSIGNED,
+	client_ip		VARCHAR(255),
+	PRIMARY KEY( optout_id )
+) Engine=InnoDB;

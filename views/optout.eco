@@ -1,0 +1,25 @@
+<% @html_title = 'Opt out' %>
+
+<% @content = () => %>
+
+  <div class="view">
+    <p>
+      I don't want to email you if you don't want to receive it. If you fill in the following form, I will store a salted hash of your
+      email address. Whenever this system tries to send an email it queries that database and blocks the email if it has been opted out.
+    </p>
+
+    <% if @success : %>
+      <span>
+        <br>
+        Successfully opted out <%= @email %>
+        <br><br>
+      </span>
+    <% end %>
+
+    <form method="post" action="optout">
+      <input class="email<%= if @error then ' bad' else '' %>"  type="text"   name="email" required="" autofocus="" placeholder="Email address" value="<%= @email %>"><br>
+      <br>
+      <input class="submit" type="submit" name="submit" value="Opt out">
+    </form>
+  </div>
+<% end %>

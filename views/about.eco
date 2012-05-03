@@ -1,0 +1,37 @@
+<% @html_title   = 'About' %>
+<% @nav_selected = 'about' %>
+
+<% @content = () => %>
+
+  <div class="view">
+    <p>
+      <span class="pgp">---<!-- Purposefully break FirePGPs crappy inline detection -->--BEGIN PGP SIGNED MESSAGE-----<br>
+Hash: SHA1<br><br></span>
+Some email clients perform operations when reading an email which give away information about the reader,
+to the sender of the message. If you enter your email address below, this application will send you a
+specially crafted email which uses a variety of techniques, to attempt to send information back to this
+server when read. It will then display the results for you.<br>
+<br>
+The results are dynamic, so initially they will say that none of the tests have succeeded. Open the message
+in your email client and a bunch of tests might be triggered. Then click the "Load remote images" button (or
+equivalent) in your client and more tests may be triggered.<br>
+<br>
+If merely reading the message without selecting to load remote images triggers any of the tests, then either
+your email client has a "privacy bug," or it is not configured for optimal privacy.<br>
+<br>
+I run email systems for a living so hate spam more than most people. I take your privacy extremely seriously.
+Please check out my <a href="/privacy">privacy page</a> if you want to know more.<span class="pgp"><br><br>-----BEGIN PGP SIGNATURE-----<br>
+<br>
+iQGGBAEBAgBwBQJPev5qMBSAAAAAACAAB3ByZWZlcnJlZC1lbWFpbC1lbmNvZGlu<br>
+Z0BwZ3AuY29tcGdwbWltZTgUgAAAAAAVABpwa2EtYWRkcmVzc0BnbnVwZy5vcmdt<br>
+aWtlLmNhcmR3ZWxsQGdyZXB1bGFyLmNvbQAKCRCdJiMBwdHnBGiUB/42yOH5fTY3<br>
+5bxsDuklwG/p2HWpR1wEFf63wLSddaKYD2VbS7KAbHdYIH/5Y2SFZJ0mn08PljtG<br>
+evFQZWedZdU+5RNc975HHMlkxYpxBiZrn+RCGl3zMEzN6xm/GDq9tQvxbG4+BaGG<br>
+vQa9cxQABCuPrqD1Lixq2RSmgSTv5XsWAJVrv7TfXjPB5gai3PQPP0O3BoU++cp+<br>
+iZYR5u/LG6x3jTICH3rSCwqVYjtbKXKzyr/ZPM0ZhXl9qOZFAQp/jWbS3nxKQXF4<br>
+8+/1P4f8nluGx072MTJ4k5dfdsQI9+yzinwaF0EIRLts4PZJTg37h4SOjL9SYIzA<br>
+iXMSbi/M8CwC<br>
+=L6Wq<br>
+-----END PGP SIGNATURE-----</span></p>
+  </div>
+<% end %>
