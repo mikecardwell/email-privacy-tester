@@ -22,20 +22,22 @@ I also have standard Apache-style web server logs, for administering the site, a
 <br>
 This site does not perform any automated cross-origin requests to third parties which you may not trust. This site doesn't use cookies, of any type. This site is also completely functional for browsers without JavaScript enabled, although it works much more efficiently for those which do. I respect your right to privacy and try to be as open as possible about how I use your data. If you have any questions, please <a href="https://grepular.com/contact">contact me</a><br>
 <br>
+The full source code for this application is available at <a href="https://github.com/mikecardwell/email-privacy-tester">https://github.com/mikecardwell/email-privacy-tester</a><br>
+<br>
 Regards,<br>
 <br>
 Mike Cardwell (<a href="https://grepular.com/">https://grepular.com/</a>)<span class="pgp"><br><br>-----BEGIN PGP SIGNATURE-----<br>
 <br>
-iQGGBAEBAgBwBQJPomQIMBSAAAAAACAAB3ByZWZlcnJlZC1lbWFpbC1lbmNvZGlu<br>
+iQGGBAEBAgBwBQJPosZHMBSAAAAAACAAB3ByZWZlcnJlZC1lbWFpbC1lbmNvZGlu<br>
 Z0BwZ3AuY29tcGdwbWltZTgUgAAAAAAVABpwa2EtYWRkcmVzc0BnbnVwZy5vcmdt<br>
-aWtlLmNhcmR3ZWxsQGdyZXB1bGFyLmNvbQAKCRCdJiMBwdHnBBcPCACmZ8iKRHwZ<br>
-fnJh9EfqmtGpS2q4e0iVcxdszcCI2urF7KRfRhMJ7gXHQ2XZXo5wVeL6Y55XjmH6<br>
-3N68kn6KaIuZcoz3iJph/E6rvpfOYMIyTXlXrrjuY+ZDxgZCDvuWk6xhEJyXb/0e<br>
-sS7o780LaKw4eWkF4IpFKfktRpVTUJreWUyzuCLFelQ2A7eRQVDhz82cDWxSdqVh<br>
-3anISfGYvPo+5QwAx5ScQoX/NZdj3gW+VJDfcrJiEd5EkU9nlOAHMsQZtbjFWil5<br>
-zY915QzEmZ136QIDR30Vh9hA+PSFQLX0piJIfU8GaFzHnHk8sgcpUVi/yWZb8fsL<br>
-Pqhsy4Bga/rf<br>
-=VFsa<br>
+aWtlLmNhcmR3ZWxsQGdyZXB1bGFyLmNvbQAKCRCdJiMBwdHnBIjcCADNRr8/nzij<br>
+XiW542EqF8gVrxbHZeJghrCifnp52H0/HbpF1/2XeCkTr6DSZe+mSUGNSkh9+xXa<br>
+Q1tUwm7nhpokimCI/NFn2ttzTOeGSt79jtBQnlHzaH9NcqlHE0j0S9zyY59DXlVy<br>
+knR5dIjUdoFDEzYYVb8xG0F6yTzx1XYlmV6rLPKYN0V7V00VV+XGN1mJMbXmKWTu<br>
+R3qSEkLIGluQy7zW/jMtqcQGVDa1hizoId9j6Zj0jvaEF4421EkThE+V4AeR0h/9<br>
+2wDWgZKu4DCtsjMITTUbKI4HNamsO3CQ04syTX2sbVveqYyQYfEhc6Z6J3Erx29w<br>
+n3xe1mFN8Omk<br>
+=rFRP<br>
 -----END PGP SIGNATURE-----</span></p>
   </div>
 <% end %>
