@@ -47,7 +47,7 @@
 
     <span id="data" class="hidden"
       data-email      = "<%= JSON.stringify @email %>"
-      data-status     = "<%= JSON.stringify @status %>"
+      data-status     = "<%= JSON.stringify @emailStatus %>"
       data-tests      = "<%= JSON.stringify @tests %>"
       data-emaillogid = "<%= @emailLogId %>"
       data-callbackid = "<%= @callbackId %>"
@@ -64,10 +64,10 @@
       </noscript>
     <% end %>
 
-    <div id="email_status" class="<%= @status?.status||'queued' %>">
+    <div id="email_status" class="<%= @emailStatus?.status||'queued' %>">
       <h2>
         Message Status:
-        <span class="status"><%= @status?.status||'queued' %></span>
+        <span class="status"><%= @emailStatus?.status||'queued' %></span>
       </h2>
       <table>
         <tbody>
@@ -77,13 +77,13 @@
           </tr>
           <tr>
             <td class="key">Last updated</td>
-            <td class="mtime humanAge" data-time="<%= @status?.mtime || @email.ctime %>">
-              <%= @status?.mtimeAge || @email.ctimeAge %>
+            <td class="mtime humanAge" data-time="<%= @emailStatus?.mtime || @email.ctime %>">
+              <%= @emailStatus?.mtimeAge || @email.ctimeAge %>
             </td>
           </tr>
           <tr>
             <td colspan="2" class="message mono">
-              <%= @status?.message || 'Message queued. Attempting delivery' %>
+              <%= @emailStatus?.message || 'Message queued. Attempting delivery' %>
             </td>
           </tr>
         </tbody>

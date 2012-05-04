@@ -259,10 +259,10 @@
     [ countDown, opt, anyErr ] = [ 2, {}, null ]
 
     getNewEmailStatus lookupCode, emailLogId, ( err, status, emailLogId ) ->
-      anyErr         = err if err?
-      opt.status     = status if status?
-      opt.emailLogId = emailLogId if emailLogId?
-      if --countDown == 0 then callback opt, anyErr
+      anyErr          = err if err?
+      opt.emailStatus = status if status?
+      opt.emailLogId  = emailLogId if emailLogId?
+      if --countDown  == 0 then callback opt, anyErr
 
     getNewTestHits lookupCode, callbackId, ( err, hits, callbackId ) ->
       anyErr         = err if err?
