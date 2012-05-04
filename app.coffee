@@ -84,31 +84,6 @@
 
   app.get "/foo/:lookupCode",  routes_results.foo
 
-## .coffee (TODO:REMOVE THIS BEFORE GOING LIVE)
-
-  app.get /(.+)\.coffee$/, ( req, res ) ->
-    path = "#{__dirname}/public#{req.params[0]}.coffee";
-    fs.readFile path, 'ascii', ( err, data ) ->
-      res.header 'Content-Type', 'text/plain'
-      if err
-        res.send 'Not found', 404
-      else
-        res.send data
-
-## Serve HTC files with the correct content-type
-
-  app.get /(.+\.htc)$/, ( req, res ) ->
-    path = "#{__dirname}/public#{req.params[0]}";
-    console.log "Fetching #{path}"
-    fs.readFile path, 'ascii', ( err, data ) ->
-      if err
-        res.header 'Content-Type', 'text/plain'
-        res.send 'Not found', 404
-      else
-        sendCacheHeaders res, 600
-        res.header 'Content-Type', 'text/x-component'
-        res.send data
-
 ## .js (Reads .coffee, compiles to javascript)
 
   app.get /(.+)\.js$/, ( req, res ) ->
@@ -121,9 +96,7 @@
             res.header 'Content-Type', 'text/plain'
             res.send 'Not found', 404
           else
-            ## TODO: Send the correct content-type header
-            res.header 'Content-Type', 'text/plain'
-            #res.header 'Content-Type', 'application/x-javascript'
+            res.header 'Content-Type', 'application/x-javascript'
             res.send coffee.compile data
       else
         res.header 'Content-Type', 'application/x-javascript'
