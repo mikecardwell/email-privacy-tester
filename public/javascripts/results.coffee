@@ -107,12 +107,12 @@
 							timeout: 35000
 
 						xhr.done ( data ) =>
-							if data.emailLogId? then @set 'emailLogId', data.emailLogId
-							if data.callbackId? then @set 'callbackId', data.callbackId
-							if data.status?     then @setEmailStatus data.status
-							if data.hits?       then @newHits data.hits
+							if data.emailLogId?  then @set 'emailLogId', data.emailLogId
+							if data.callbackId?  then @set 'callbackId', data.callbackId
+							if data.emailStatus? then @setEmailStatus data.emailStatus
+							if data.hits?        then @newHits data.hits
 						
-							return if data.status?.status == 'rejected'
+							return if data.emailStatus?.status == 'rejected'
 							repeat()
 
 						xhr.fail () -> setTimeout repeat, 1500
