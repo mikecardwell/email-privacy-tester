@@ -78,9 +78,10 @@
 
 ## Callbacks
 
-  app.post "#{conf.site.path}emailStatusCB/:callbackCode([0-9a-f]{16})", routes_results.emailStatusCallback
-  app.get  "#{conf.site.path}cb/:callbackCode([0-9a-f]{16})/:name",      routes_results.testCallback
-  app.post "#{conf.site.path}cb/:callbackCode([0-9a-f]{16})/:name",      routes_results.testCallback
+  app.post "#{conf.site.path}emailStatusCB/:callbackCode([0-9a-f]{16})",    routes_results.emailStatusCallback
+  app.get  "#{conf.site.path}cb/:callbackCode([0-9a-f]{16})/:name",         routes_results.testCallback
+  app.post "#{conf.site.path}cb/:callbackCode([0-9a-f]{16})/:name",         routes_results.testCallback
+  app.get  "#{conf.site.path}cb/:callbackCode([0-9a-f]{16})/:name/:ignore", routes_results.testCallback
 
   app.get "/foo/:lookupCode",  routes_results.foo
 
