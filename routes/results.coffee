@@ -46,7 +46,11 @@
         testCallbackEmail req, res, email, callbackCode, name
       else if type == 'dns'
         testCallbackDNS req, res, email, callbackCode, name
-      res.end ''
+
+      if name == 'script_in_script'
+        res.end "alert('I\'ve managed to execute javascript in your browser. That is probably a very bad security hole. Please contact me using the contact link on emailprivacytester.com so I can help sort it out.')"
+      else
+        res.end ''
 
     onFail = () ->
       return if countDown == -1
