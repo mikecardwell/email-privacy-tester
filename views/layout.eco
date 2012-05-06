@@ -54,6 +54,10 @@
 
     <%- @content() %>
 
+    <footer>
+      Website design, production and hosting by <a href="https://grepular.com/">Mike Cardwell</a> of <a href="http://cardwellit.com/">Cardwell IT Ltd.</a>
+    </footer>
+
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/punycode.js"></script>
     <script src="/javascripts/common.js"></script>
