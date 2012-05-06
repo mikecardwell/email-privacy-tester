@@ -27,6 +27,9 @@
       <% end %>
     <% end %>
 
+    <link rel="alternate" type="application/rss+xml"  href="https://grepular.com/category/EmailPrivacyTester/rss"  title="The Email Privacy Tester (RSS)">
+    <link rel="alternate" type="application/atom+xml" href="https://grepular.com/category/EmailPrivacyTester/atom" title="The Email Privacy Tester (Atom)">
+
     <% if @html_head_append?: %><%- @html_head_append() %><% end %>
   </head>
   <body class="no-js">
@@ -36,7 +39,7 @@
     <header>
       <a href="/">Email Privacy Tester<% if @html_title?: %>: <%= @html_title %><% end %></a>
       <span class="left">
-        <a href="https://grepular.com/blog/"><img src="/images/white_rss.png" width="20" height="20" alt="" title="Follow my blog"></a>
+        <a href="https://grepular.com/category/EmailPrivacyTester/feed"><img src="/images/white_rss.png" width="20" height="20" alt="" title="Follow my blog"></a>
         <a href="https://twitter.com/mickeyc"><img src="/images/white_twitter_bird.png" width="20" height="20" alt="" title="Follow me on Twitter"></a>
         <a href="https://www.linkedin.com/in/mikecardwell"><img src="/images/white_linkedin.png" width="20" height="20" alt="" title="Find me on LinkedIn"></a>
       </span>
