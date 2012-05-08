@@ -35,7 +35,9 @@
 ## When the user submits an email
 
   exports.submit = ( req, res ) ->
-    email = ept_email.emailToUnicode req.body?.email
+    email = ept_email.emailToUnicode req.body?.email || ''
+    email = email.replace /[\r\n]+/g, ''
+    email = email.replace /^\s*(.*?)\s*$/, '$1'
 
     client_ip = clientIP req
     submit email, client_ip, ( info ) ->
