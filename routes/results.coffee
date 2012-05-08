@@ -34,14 +34,17 @@
     res.header 'Content-Type', 'text/plain'
 
     ## Parse args
+    clientIP     = req.socket?.remoteAddress
     callbackCode = req.params.callbackCode
     name         = req.params.name
+
+    return unless clientIP
 
     [ countDown, email, type ] = [ 2, null, null ]
 
     onSuccess = () ->
       if type == 'http'
-        testCallbackHTTP req, res, email, callbackCode, name
+        testCallbackHTTP req, res, email, callbackCode, name, clientIP
       else if type == 'email'
         testCallbackEmail req, res, email, callbackCode, name
       else if type == 'dns'
@@ -67,11 +70,10 @@
       type = t.type
       onSuccess() if --countDown == 0
 
-  testCallbackHTTP = ( req, res, email, callbackCode, name ) ->
+  testCallbackHTTP = ( req, res, email, callbackCode, name, clientIP ) ->
 
     ## Calculate additional callback info
     httpXForwardedFor = (req.header('x-forwarded-for')||'').split /\s*,\s*/
-    clientIP          = req.socket.remoteAddress
 
     ## Get the client IP. Use the X-Forwarded-For header if necessary
     ignoreIPrx = /^(127|192\.168|10|172\.(1[6-9]|2\d|3[01]))\./
