@@ -1,0 +1,10 @@
+<% @html_title = 'Meta Refresh Hit' %>
+
+<% @content = () => %>
+  <div class="view">
+    <p>
+       Your email client has opened this webpage over the web. It has done this because it honours meta refreshes in HTML email. This is very
+       wrong behavior. You'll notice that the meta refresh test has been triggered if you look back at the results page.
+    </p>
+  </div>
+<% end %>

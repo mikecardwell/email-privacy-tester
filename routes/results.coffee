@@ -30,9 +30,6 @@
 
   exports.testCallback = ( req, res ) ->
 
-    ## Get rid of the client ASAP
-    res.header 'Content-Type', 'text/plain'
-
     ## Parse args
     clientIP     = req.socket?.remoteAddress
     callbackCode = req.params.callbackCode
@@ -51,8 +48,12 @@
         testCallbackDNS req, res, email, callbackCode, name
 
       if name == 'script_in_script'
+        res.header 'Content-Type', 'text/plain'
         res.end "alert('I\\'ve managed to execute javascript in your browser. That is probably a very bad security hole. Please contact me using the contact link on emailprivacytester.com so I can help sort it out.')"
+      else if name == 'meta_refresh'
+        sendHTML res, 'callback_meta_refresh'
       else
+        res.header 'Content-Type', 'text/plain'
         res.end ''
 
     onFail = () ->
