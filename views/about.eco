@@ -1,5 +1,6 @@
 <% @html_title   = 'About' %>
 <% @nav_selected = 'about' %>
+<% @html_description = 'Information about how The Email Privacy Tester functions and what to expect' %>
 
 <% @content = () => %>
 

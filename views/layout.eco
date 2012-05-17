@@ -5,7 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="author"      content="Mike Cardwell. &lt;https://grepular.com/&gt;"/>
-    <meta name="description" content="An application which test the privacy and security of email/webmail clients"/>
+    <% if @html_description?: %>
+      <meta name="description" content="<%= @html_description %>"/>
+    <% else: %>
+      <meta name="description" content="An application which test the privacy and security of email/webmail clients"/>
+    <% end %>
     <meta name="robots"      content="noodp,noydir,index,follow"/>
     <meta name="viewport"    content="width=device-width"/>
 
