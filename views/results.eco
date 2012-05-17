@@ -64,6 +64,8 @@
       </noscript>
     <% end %>
 
+    <p id="bloginfo">If you're interested in privacy and security on the Internet. Check out <a href="https://grepular.com/blog/">my tech blog</a></p>
+
     <div id="email_status" class="<%= @emailStatus?.status||'queued' %>">
       <h2>
         Message Status:
