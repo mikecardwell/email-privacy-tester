@@ -14,7 +14,7 @@
 
   exports.foo = ( req, res ) ->
     lookupCode = req.params.lookupCode
-    res.header 'Content-Type', 'text/plain'
+    res.set 'Content-Type', 'text/plain'
     counter = 0
     setInterval () ->
       res.write "#{++counter}\n"
@@ -48,12 +48,12 @@
         testCallbackDNS req, res, email, callbackCode, name
 
       if name == 'script_in_script' or name == 'js'
-        res.header 'Content-Type', 'text/plain'
+        res.set 'Content-Type', 'text/plain'
         res.end "alert('I\\'ve managed to execute javascript in your browser. That is probably a very bad security hole. Please contact me using the contact link on emailprivacytester.com so I can help sort it out.')"
       else if name == 'meta_refresh'
         sendHTML res, 'callback_meta_refresh'
       else
-        res.header 'Content-Type', 'text/plain'
+        res.set 'Content-Type', 'text/plain'
         res.end ''
 
     onFail = () ->
@@ -74,7 +74,7 @@
   testCallbackHTTP = ( req, res, email, callbackCode, name, clientIP ) ->
 
     ## Calculate additional callback info
-    httpXForwardedFor = (req.header('x-forwarded-for')||'').split /\s*,\s*/
+    httpXForwardedFor = (req.get('x-forwarded-for')||'').split /\s*,\s*/
 
     ## Get the client IP. Use the X-Forwarded-For header if necessary
     ignoreIPrx = /^(127|192\.168|10|172\.(1[6-9]|2\d|3[01]))\./
@@ -86,7 +86,7 @@
     httpXForwardedFor = if httpXForwardedFor.length == 0 then null else httpXForwardedFor.join ','
 
     sql = 'INSERT INTO callback SET email_id=?, ctime=?, name=?, client_ip=?, http_user_agent=?, http_x_forwarded_for=?'
-    dbh.query sql, [ email.email_id, Date.now(), name, clientIP, req.header('user-agent'), httpXForwardedFor ], ( err, info ) ->
+    dbh.query sql, [ email.email_id, Date.now(), name, clientIP, req.get('user-agent'), httpXForwardedFor ], ( err, info ) ->
       ## Let long-poll clients know about the update
       emitter.emit "newCallback#{email.lookupCode}" unless err?
 
@@ -307,10 +307,10 @@
   sendHTML = ( res, name, obj ) ->                        
     obj?.conf = conf unless obj?.conf?
     res.charset = 'UTF-8'
-    res.header 'Content-Type', 'text/html'
+    res.set 'Content-Type', 'text/html'
     res.render name, obj
 
   sendJSON = ( res, obj ) ->
     res.charset = 'UTF-8'
-    res.header 'Content-Type', 'application/json'
+    res.set 'Content-Type', 'application/json'
     res.end JSON.stringify obj

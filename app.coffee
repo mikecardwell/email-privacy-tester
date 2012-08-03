@@ -13,7 +13,7 @@
 
 ## Configure the app
 
-  app = module.exports = express.createServer()
+  app = module.exports = express()
 
   app.configure ->
 
@@ -104,13 +104,13 @@
       if err
         fs.readFile "#{path}.coffee", 'ascii', ( err, data ) ->
           if err
-            res.header 'Content-Type', 'text/plain'
-            res.send 'Not found', 404
+            res.set 'Content-Type', 'text/plain'
+            res.send 404, 'Not found'
           else
-            res.header 'Content-Type', 'application/x-javascript'
+            res.set 'Content-Type', 'application/x-javascript'
             res.send coffee.compile data
       else
-        res.header 'Content-Type', 'application/x-javascript'
+        res.set 'Content-Type', 'application/x-javascript'
         res.send data
 
 ## .css
@@ -118,22 +118,22 @@
   app.get /^(.+)\.css$/, ( req, res ) ->
     fs.readFile "#{__dirname}/public#{req.params[0]}.less", 'ascii', ( err, data ) ->
       if err
-        res.header 'Content-Type', 'text/plain'
-        res.send 'Not found', 404
+        res.set 'Content-Type', 'text/plain'
+        res.send 404, 'Not found'
       else
         less.render data, compress: true, (err,css) ->
           if err
-            res.header 'Content-Type', 'text/plain'
-            res.send "Internal Server Error: #{err.message}", 500
+            res.set 'Content-Type', 'text/plain'
+            res.send 500, "Internal Server Error: #{err.message}"
           else
-            res.header 'Content-Type', 'text/css'
+            res.set 'Content-Type', 'text/css'
             res.send css
 
 ## Send HTTP cache headers
 
   sendCacheHeaders = ( res, seconds ) ->
-    res.header 'Cache-Control', "max-age=#{seconds}, public"
-    res.header 'Expires', new Date( Date.now() + seconds * 1000 ).toUTCString()
+    res.set 'Cache-Control', "max-age=#{seconds}, public"
+    res.set 'Expires', new Date( Date.now() + seconds * 1000 ).toUTCString()
 
 
 ## Start Listening

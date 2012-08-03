@@ -107,24 +107,24 @@
 
   clientIP = ( req ) ->
     client_ip   = req.socket.remoteAddress
-    if client_ip is '127.0.0.1' then client_ip = req.header('x-forwarded-for').replace /.*,\s*/, ''
+    if client_ip is '127.0.0.1' then client_ip = req.get('x-forwarded-for').replace /.*,\s*/, ''
     return client_ip
 
   sendHTML = ( res, name, obj ) ->
     #sendCacheHeaders res, 1800 unless obj?
     obj?.conf = conf unless obj?.conf?
     res.charset = 'UTF-8'
-    res.header 'Content-Type', 'text/html'
+    res.set 'Content-Type', 'text/html'
     res.render name, obj
 
   sendJSON = ( res, obj ) ->
     res.charset = 'UTF-8'
-    res.header 'Content-Type', 'application/json'
+    res.set 'Content-Type', 'application/json'
     res.end JSON.stringify obj
 
   sendCacheHeaders = ( res, seconds ) ->
-    res.header 'Cache-Control', "max-age=#{seconds}, public"
-    res.header 'Expires', new Date( Date.now() + seconds * 1000 ).toUTCString()
+    res.set 'Cache-Control', "max-age=#{seconds}, public"
+    res.set 'Expires', new Date( Date.now() + seconds * 1000 ).toUTCString()
 
   getSalt = () ->
     salt = ''
