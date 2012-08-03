@@ -45,7 +45,7 @@
         sendHTML res, 'index', email: email, error: info.error
       else
         console.log "Email sent to #{email}, lookup code: #{info.lookup_code}"
-        res.redirect "#{conf.site.path}#{info.lookup_code}", 302
+        res.redirect 302, "#{conf.site.path}#{info.lookup_code}"
 
 ## Handle opt outs
 

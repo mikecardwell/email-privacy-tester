@@ -1,11 +1,11 @@
 {
     "name": "email-privacy-tester"
-  , "version": "0.0.1"
+  , "version": "0.0.2"
   , "private": true
   , "dependencies": {
       "coffee-script": ">= 0.0.1"
     , "eco": ">= 0.0.1"
-    , "express": ">= 0.0.1"
+    , "express": ">= 3"
     , "less": ">= 0.0.1"
     , "libxmljs": ">= 0.0.1"
     , "mailparser": ">= 0.0.1"

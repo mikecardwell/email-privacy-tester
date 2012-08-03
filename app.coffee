@@ -16,6 +16,16 @@
   app = module.exports = express.createServer()
 
   app.configure ->
+
+    ## eco doesn't work with Express 3 yet and express 3 has dropped layouts. This is a bit hackish but works
+    app.engine 'eco', (path, options, fn) ->
+      fs.readFile path, 'utf8', (err, inner_eco) ->
+        return fn err if err
+        fs.readFile path.replace(/^(.+)\/.*/,'$1/layout.eco'), 'utf8', (err, outer_eco) ->
+          return fn err if err
+          html = require('eco').render inner_eco+outer_eco, options
+          fn null, html 
+
     app.set k,v for k,v of {
       'views':  "#{__dirname}/views"
       'view engine':  'eco'
@@ -45,7 +55,7 @@
 
 ## Remove slashes from the end of URLs
 
-  app.get /.\/$/, ( req, res ) -> res.redirect req.url.replace( /^(.+)\/$/, '$1' ), 302
+  app.get /.\/$/, ( req, res ) -> res.redirect 302, req.url.replace( /^(.+)\/$/, '$1' )
 
 ## Base pages
 
@@ -128,10 +138,10 @@
 
 ## Start Listening
 
-  app.listen 3000
+  server = app.listen conf.site.port
 
-  if app.address()
-    console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
+  if server.address()
+    console.log "Express server listening on port %d in %s mode", server.address().port, app.settings.env
   else
     console.log "Failed to bind to port"
     process.exit 1

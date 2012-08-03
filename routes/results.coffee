@@ -151,7 +151,7 @@
 
       ## Delay the redirect as a buffer for when multiple events happen close together
       setTimeout () =>
-        res.redirect "#{conf.site.path}#{lookupCode}#testHits", 302
+        res.redirect 302, "#{conf.site.path}#{lookupCode}#testHits"
       , 250
 
     ## If the status has already updated since last we checked then refresh immediately, otherwise wait:
