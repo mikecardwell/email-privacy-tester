@@ -10,7 +10,7 @@
 
 ## Connect to the DB
 
-  dbh = mysql.createClient conf.db
+  dbh = mysql.createConnection conf.db
 
   exports.foo = ( req, res ) ->
     lookupCode = req.params.lookupCode

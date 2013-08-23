@@ -8,7 +8,7 @@
 
 ## Connect to MySQL
 
-  dbh = mysql.createClient conf.db
+  dbh = mysql.createConnection conf.db
 
 ## Set up an hourly job to delete old results
 
