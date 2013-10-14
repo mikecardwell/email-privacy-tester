@@ -12,6 +12,7 @@ CREATE TABLE email (
 	ctime			BIGINT UNSIGNED	NOT NULL,
 	client_ip		VARCHAR(255)	NOT NULL,
 	PRIMARY KEY( email_id )
+	KEY `lookup_code` (`lookup_code`)
 ) Engine=InnoDB;
 
 CREATE TABLE email_log_type (
