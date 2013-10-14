@@ -116,18 +116,25 @@
 ## .css
 
   app.get /^(.+)\.css$/, ( req, res ) ->
-    fs.readFile "#{__dirname}/public#{req.params[0]}.less", 'ascii', ( err, data ) ->
+    path = "#{__dirname}/public#{req.params[0]}";
+
+    fs.readFile "#{path}.css", 'ascii', ( err, data ) ->
       if err
-        res.set 'Content-Type', 'text/plain'
-        res.send 404, 'Not found'
-      else
-        less.render data, compress: true, (err,css) ->
+        fs.readFile "#{__dirname}/public#{req.params[0]}.less", 'ascii', ( err, data ) ->
           if err
             res.set 'Content-Type', 'text/plain'
-            res.send 500, "Internal Server Error: #{err.message}"
+            res.send 404, 'Not found'
           else
-            res.set 'Content-Type', 'text/css'
-            res.send css
+            less.render data, compress: true, (err,css) ->
+              if err
+                res.set 'Content-Type', 'text/plain'
+                res.send 500, "Internal Server Error: #{err.message}"
+              else
+                res.set 'Content-Type', 'text/css'
+                res.send css
+      else
+        res.set 'Content-Type', 'text/css'
+        res.send data
 
 ## Send HTTP cache headers
 
