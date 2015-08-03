@@ -11,7 +11,7 @@ CREATE TABLE email (
 	lookup_code		VARCHAR(16)	NOT NULL,
 	ctime			BIGINT UNSIGNED	NOT NULL,
 	client_ip		VARCHAR(255)	NOT NULL,
-	PRIMARY KEY( email_id )
+	PRIMARY KEY( email_id ),
 	KEY `lookup_code` (`lookup_code`)
 ) Engine=InnoDB;
 
