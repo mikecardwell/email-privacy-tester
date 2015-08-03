@@ -107,7 +107,7 @@
 
   clientIP = ( req ) ->
     client_ip   = req.socket.remoteAddress
-    if client_ip is '127.0.0.1' then client_ip = req.get('x-forwarded-for').replace /.*,\s*/, ''
+    if client_ip is '127.0.0.1' and req.get('x-forwarded-for') then client_ip = req.get('x-forwarded-for').replace /.*,\s*/, ''
     return client_ip
 
   sendHTML = ( res, name, obj ) ->
